@@ -1,0 +1,55 @@
+.section {
+  padding: 60px 0;
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.label {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 32px;
+}
+
+.marqueeWrapper {
+  position: relative;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+.marqueeTrack {
+  display: flex;
+  gap: 48px;
+  animation: marquee 30s linear infinite;
+  width: max-content;
+}
+
+.marqueeWrapper:hover .marqueeTrack {
+  animation-play-state: paused;
+}
+
+.clientItem {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: 12px 24px;
+}
+
+.clientName {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  letter-spacing: -0.01em;
+  transition: color 0.3s var(--ease-out);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.clientItem:hover .clientName {
+  color: var(--text-muted);
+}

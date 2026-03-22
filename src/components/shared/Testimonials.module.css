@@ -1,0 +1,178 @@
+.section {
+  background: var(--bg-elevated);
+  overflow: hidden;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.label {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: var(--accent-light);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+
+.heading {
+  margin-bottom: 16px;
+}
+
+/* Carousel */
+.carousel {
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.cardWrapper {
+  position: relative;
+  min-height: 340px;
+  perspective: 1000px;
+}
+
+.card {
+  position: absolute;
+  inset: 0;
+  padding: 40px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  opacity: 0;
+  transform: scale(0.9) rotateY(10deg);
+  transition: all 0.5s var(--ease-out);
+  pointer-events: none;
+}
+
+.card.active {
+  opacity: 1;
+  transform: scale(1) rotateY(0deg);
+  pointer-events: auto;
+  z-index: 2;
+}
+
+.card.prev {
+  opacity: 0.3;
+  transform: scale(0.85) translateX(-40px) rotateY(5deg);
+  z-index: 1;
+}
+
+.card.next {
+  opacity: 0.3;
+  transform: scale(0.85) translateX(40px) rotateY(-5deg);
+  z-index: 1;
+}
+
+.quoteIcon {
+  color: var(--accent);
+  opacity: 0.4;
+}
+
+.content {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  font-style: italic;
+}
+
+.stars {
+  display: flex;
+  gap: 4px;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  color: white;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.name {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.role {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.navButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  transition: all 0.3s var(--ease-out);
+}
+
+.navButton:hover {
+  color: var(--text);
+  border-color: var(--accent);
+  background: var(--accent-subtle);
+}
+
+.dots {
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-dim);
+  transition: all 0.3s var(--ease-out);
+  padding: 0;
+}
+
+.dotActive {
+  background: var(--accent);
+  width: 24px;
+  border-radius: 999px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .card {
+    padding: 28px 24px;
+  }
+
+  .cardWrapper {
+    min-height: 380px;
+  }
+}

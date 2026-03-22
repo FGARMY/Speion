@@ -2,15 +2,7 @@
   position: relative;
 }
 
-.section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--gradient-mesh);
-  opacity: 0.5;
-  animation: meshMove 20s ease-in-out infinite;
-  pointer-events: none;
-}
+
 
 .grid {
   display: grid;
@@ -35,24 +27,21 @@
 
 .number {
   font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-size: clamp(3rem, 6vw, 5rem);
   font-weight: 700;
-  color: var(--text);
   line-height: 1;
 }
 
 .suffix {
   font-family: var(--font-heading);
-  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 700;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .label {
-  font-size: 0.9rem;
+  font-family: var(--font-subheading);
+  font-size: 0.95rem;
+  font-weight: 600;
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;

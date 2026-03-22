@@ -57,17 +57,14 @@ export default function Testimonials() {
             {testimonials.map((testimonial, index) => (
               <div
                 key={testimonial.name}
-                className={`${styles.card} ${
-                  index === active ? styles.active : ""
-                } ${
-                  index === (active - 1 + testimonials.length) % testimonials.length
+                className={`${styles.card} ${index === active ? styles.active : ""
+                  } ${index === (active - 1 + testimonials.length) % testimonials.length
                     ? styles.prev
                     : ""
-                } ${
-                  index === (active + 1) % testimonials.length
+                  } ${index === (active + 1) % testimonials.length
                     ? styles.next
                     : ""
-                }`}
+                  }`}
               >
                 <Quote size={32} className={styles.quoteIcon} />
                 <p className={styles.content}>{testimonial.content}</p>
@@ -106,9 +103,8 @@ export default function Testimonials() {
               {testimonials.map((_, index) => (
                 <button
                   key={index}
-                  className={`${styles.dot} ${
-                    index === active ? styles.dotActive : ""
-                  }`}
+                  className={`${styles.dot} ${index === active ? styles.dotActive : ""
+                    }`}
                   onClick={() => setActive(index)}
                   aria-label={`Go to testimonial ${index + 1}`}
                 />

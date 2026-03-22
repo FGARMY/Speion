@@ -1,134 +1,49 @@
 import Link from "next/link";
-import {
-  Mail,
-  Phone,
-  MapPin,
-  ArrowUpRight,
-  Instagram,
-  Linkedin,
-  Twitter,
-  Github,
-} from "lucide-react";
+import { Twitter, Linkedin } from "lucide-react";
 import styles from "./Footer.module.css";
 
-const quickLinks = [
-  { href: "/", label: "Home" },
-  { href: "/services", label: "Services" },
-  { href: "/about", label: "About Us" },
-  { href: "/work", label: "Our Work" },
-  { href: "/contact", label: "Contact" },
-];
-
-const services = [
-  "Website Development",
-  "Logo Design",
-  "Brand Identity Kits",
-  "UI/UX Design",
-  "SEO Optimization",
-];
-
 const socials = [
-  { icon: Instagram, href: "#", label: "Instagram" },
+  { icon: Twitter, href: "#", label: "X (Twitter)" },
   { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Github, href: "#", label: "GitHub" },
 ];
 
 export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={`container ${styles.footerContent}`}>
-        {/* CTA Section */}
-        <div className={styles.ctaSection}>
-          <h2 className={styles.ctaHeading}>
-            Let&apos;s Build Something{" "}
-            <span className="gradient-text">Amazing</span> Together
-          </h2>
-          <p className={styles.ctaText}>
-            Ready to transform your digital presence? Let&apos;s talk about your
-            project.
-          </p>
-          <Link href="/contact" className={styles.ctaButton}>
-            Start a Project
-            <ArrowUpRight size={18} />
+        <div className={styles.topRow}>
+          {/* Brand */}
+          <Link href="/" className={styles.footerLogo}>
+            <span className={styles.logoIcon}>S</span>
+            <span className={`${styles.logoText} gradient-text`}>SPEION</span>
           </Link>
-        </div>
 
-        <div className={styles.divider} />
-
-        {/* Footer Grid */}
-        <div className={styles.grid}>
-          {/* Brand Column */}
-          <div className={styles.brandCol}>
-            <Link href="/" className={styles.footerLogo}>
-              <span className={styles.logoIcon}>S</span>
-              <span className={styles.logoText}>Speion</span>
-            </Link>
-            <p className={styles.brandDescription}>
-              Crafting high-performance websites, stunning logos, and brand
-              identities that convert visitors into customers.
-            </p>
-            <div className={styles.socials}>
-              {socials.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  className={styles.socialLink}
-                  aria-label={social.label}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <social.icon size={18} />
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Quick Links */}
-          <div className={styles.linkCol}>
-            <h4 className={styles.colTitle}>Quick Links</h4>
-            <ul className={styles.linkList}>
-              {quickLinks.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className={styles.footerLink}>
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Services */}
-          <div className={styles.linkCol}>
-            <h4 className={styles.colTitle}>Services</h4>
-            <ul className={styles.linkList}>
-              {services.map((service) => (
-                <li key={service}>
-                  <Link href="/services" className={styles.footerLink}>
-                    {service}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div className={styles.linkCol}>
-            <h4 className={styles.colTitle}>Contact</h4>
-            <ul className={styles.contactList}>
-              <li className={styles.contactItem}>
-                <Mail size={16} />
-                <a href="mailto:hello@speion.com">hello@speion.com</a>
-              </li>
-              <li className={styles.contactItem}>
-                <Phone size={16} />
-                <a href="tel:+919876543210">+91 98765 43210</a>
-              </li>
-              <li className={styles.contactItem}>
-                <MapPin size={16} />
-                <span>India</span>
-              </li>
-            </ul>
+          {/* Socials */}
+          <div className={styles.socials}>
+            {socials.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                className={styles.socialLink}
+                aria-label={social.label}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <social.icon size={20} />
+              </a>
+            ))}
+            <a
+              href="#"
+              className={styles.socialLink}
+              aria-label="Dribbble"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"></path>
+              </svg>
+            </a>
           </div>
         </div>
 
@@ -139,10 +54,9 @@ export default function Footer() {
           <p className={styles.copyright}>
             © {new Date().getFullYear()} Speion. All rights reserved.
           </p>
-          <div className={styles.legalLinks}>
-            <Link href="#">Privacy Policy</Link>
-            <Link href="#">Terms of Service</Link>
-          </div>
+          <p className={styles.designer}>
+            Designed with ⚡ by <span className="gradient-text">Speion</span>
+          </p>
         </div>
       </div>
     </footer>

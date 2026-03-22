@@ -49,7 +49,7 @@ export default function Navbar() {
       <nav className={styles.nav}>
         <Link href="/" className={styles.logo} aria-label="Speion Home">
           <span className={styles.logoIcon}>S</span>
-          <span className={styles.logoText}>Speion</span>
+          <span className={`${styles.logoText} gradient-text`}>SPEION</span>
         </Link>
 
         <ul className={styles.desktopLinks}>

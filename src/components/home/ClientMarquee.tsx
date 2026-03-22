@@ -1,29 +1,23 @@
 import styles from "./ClientMarquee.module.css";
 
 const clients = [
-  "TechFlow",
-  "Lumina",
-  "NovaStar",
-  "Zenith",
-  "Praxis",
-  "Orbital",
-  "Vertex",
-  "Catalyst",
-  "Helix",
-  "Pinnacle",
+  "Website Development",
+  "Branding",
+  "UI/UX",
+  "SEO",
+  "React",
+  "Next.js",
 ];
 
 export default function ClientMarquee() {
   return (
     <section className={styles.section}>
-      <div className="container">
-        <p className={styles.label}>Trusted by innovative brands</p>
-      </div>
       <div className={styles.marqueeWrapper}>
         <div className={styles.marqueeTrack}>
-          {[...clients, ...clients].map((client, i) => (
+          {[...clients, ...clients, ...clients, ...clients].map((client, i) => (
             <div key={`${client}-${i}`} className={styles.clientItem}>
               <span className={styles.clientName}>{client}</span>
+              <span className={styles.dot}>•</span>
             </div>
           ))}
         </div>

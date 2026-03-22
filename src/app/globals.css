@@ -1,6 +1,9 @@
 /* ===========================
    SPEION — Global Design System
    =========================== */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* ---------- CSS Reset ---------- */
 *, *::before, *::after {
@@ -58,37 +61,39 @@ input, textarea, select {
 /* ---------- Design Tokens ---------- */
 :root {
   /* Colors */
-  --bg: #0a0a0f;
-  --bg-elevated: #101018;
-  --bg-card: #12121a;
-  --bg-card-hover: #181824;
+  --bg: #050508;
+  --bg-elevated: #0a0a0f;
+  --bg-card: #0d0d12;
+  --bg-card-hover: #121218;
   --accent: #6c5ce7;
-  --accent-light: #a78bfa;
+  --accent-pink: #fd79a8;
+  --accent-cyan: #00cec9;
   --accent-glow: rgba(108, 92, 231, 0.4);
   --accent-subtle: rgba(108, 92, 231, 0.08);
   --secondary: #00cec9;
   --text: #f0f0f5;
   --text-muted: #8888a0;
   --text-dim: #555570;
-  --border: rgba(255, 255, 255, 0.06);
-  --border-hover: rgba(255, 255, 255, 0.12);
-  --glass: rgba(18, 18, 26, 0.75);
-  --glass-border: rgba(255, 255, 255, 0.08);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.15);
+  --glass: rgba(13, 13, 18, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.05);
   --success: #00b894;
   --warning: #fdcb6e;
   --error: #ff7675;
 
   /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #6c5ce7, #a78bfa);
-  --gradient-accent: linear-gradient(135deg, #6c5ce7, #00cec9);
-  --gradient-subtle: linear-gradient(135deg, rgba(108,92,231,0.15), rgba(167,139,250,0.05));
-  --gradient-mesh: radial-gradient(ellipse at 20% 50%, rgba(108,92,231,0.15) 0%, transparent 50%),
-                   radial-gradient(ellipse at 80% 20%, rgba(0,206,201,0.1) 0%, transparent 50%),
-                   radial-gradient(ellipse at 50% 80%, rgba(167,139,250,0.08) 0%, transparent 50%);
+  --gradient-primary: linear-gradient(135deg, var(--accent), var(--accent-pink));
+  --gradient-accent: linear-gradient(135deg, var(--accent-pink), var(--accent-cyan));
+  --gradient-subtle: linear-gradient(135deg, rgba(108,92,231,0.1), rgba(253,121,168,0.1));
+  --gradient-mesh: radial-gradient(ellipse at 20% 50%, rgba(108,92,231,0.2) 0%, transparent 50%),
+                   radial-gradient(ellipse at 80% 20%, rgba(253,121,168,0.2) 0%, transparent 50%),
+                   radial-gradient(ellipse at 50% 80%, rgba(0,206,201,0.15) 0%, transparent 50%);
 
   /* Typography */
-  --font-heading: var(--font-outfit), 'Outfit', sans-serif;
-  --font-body: var(--font-inter), 'Inter', sans-serif;
+  --font-heading: var(--font-bebas), 'Bebas Neue', display;
+  --font-subheading: var(--font-syne), 'Syne', sans-serif;
+  --font-body: var(--font-dm), 'DM Sans', sans-serif;
 
   /* Spacing */
   --section-padding: clamp(80px, 10vw, 160px);
@@ -103,9 +108,9 @@ input, textarea, select {
   --radius-pill: 999px;
 
   /* Shadows */
-  --shadow-sm: 0 2px 8px rgba(0,0,0,0.2);
-  --shadow-md: 0 8px 32px rgba(0,0,0,0.3);
-  --shadow-lg: 0 16px 64px rgba(0,0,0,0.4);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
+  --shadow-md: 0 8px 32px rgba(0,0,0,0.5);
+  --shadow-lg: 0 16px 64px rgba(0,0,0,0.6);
   --shadow-glow: 0 0 40px rgba(108,92,231,0.3);
   --shadow-glow-lg: 0 0 80px rgba(108,92,231,0.2);
 
@@ -174,12 +179,24 @@ input, textarea, select {
   border-width: 0;
 }
 
+/* Noise Texture Overlay */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+}
+
 /* ---------- Typography ---------- */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  line-height: 1.0;
+  letter-spacing: 0.02em; /* Bebas looks good with slight tracking */
+  text-transform: uppercase;
 }
 
 h1 { font-size: clamp(2.5rem, 6vw, 5rem); }

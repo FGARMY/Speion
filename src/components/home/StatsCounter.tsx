@@ -4,10 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./StatsCounter.module.css";
 
 const stats = [
-  { value: 20, suffix: "+", label: "Projects Delivered" },
-  { value: 15, suffix: "+", label: "Happy Clients" },
-  { value: 3, suffix: "+", label: "Years Experience" },
-  { value: 100, suffix: "%", label: "Client Satisfaction" },
+  { value: 150, suffix: "+", label: "Projects Delivered" },
+  { value: 99, suffix: "%", label: "Client Satisfaction" },
+  { value: 14, suffix: "d", label: "Avg. Delivery Time" },
+  { value: 24, suffix: "/7", label: "Dedicated Support" },
 ];
 
 function useCountUp(target: number, duration: number = 2000, start: boolean = false) {
@@ -46,7 +46,7 @@ function StatItem({ value, suffix, label, start }: {
 
   return (
     <div className={styles.statItem}>
-      <div className={styles.value}>
+      <div className={`${styles.value} gradient-text`}>
         <span className={styles.number}>{count}</span>
         <span className={styles.suffix}>{suffix}</span>
       </div>

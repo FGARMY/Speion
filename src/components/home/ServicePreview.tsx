@@ -1,29 +1,44 @@
 "use client";
 
-import { Globe, Palette, Layers } from "lucide-react";
+import { Check } from "lucide-react";
 import styles from "./ServicePreview.module.css";
 
-const services = [
+const packages = [
   {
-    icon: Globe,
-    title: "Website Development",
-    description:
-      "High-performance, responsive websites built with modern tech stacks for speed, SEO, and conversion.",
-    gradient: "linear-gradient(135deg, #6c5ce7, #a78bfa)",
+    tier: "Starter",
+    price: "₹20,000",
+    timeline: "5 – 7 Days",
+    features: [
+      "3–5 Pages",
+      "Clean, modern UI",
+      "Mobile responsive",
+      "Contact form setup",
+    ],
+    popular: false,
   },
   {
-    icon: Palette,
-    title: "Logo Design",
-    description:
-      "Unique, memorable logos that capture your brand essence and leave a lasting impression.",
-    gradient: "linear-gradient(135deg, #00cec9, #55efc4)",
+    tier: "Professional",
+    price: "₹45,000",
+    timeline: "2 – 3 Weeks",
+    features: [
+      "6–10 Pages",
+      "Custom UI/UX design",
+      "Speed & SEO optimized",
+      "CMS integration",
+    ],
+    popular: true,
   },
   {
-    icon: Layers,
-    title: "Branding Kits",
-    description:
-      "Complete brand identity systems — colors, typography, guidelines — everything for a cohesive brand.",
-    gradient: "linear-gradient(135deg, #fd79a8, #e17055)",
+    tier: "Premium",
+    price: "₹85,000+",
+    timeline: "4 – 6 Weeks",
+    features: [
+      "Unlimited Pages",
+      "Advanced animations",
+      "Custom backend / Logic",
+      "Priority support",
+    ],
+    popular: false,
   },
 ];
 
@@ -32,32 +47,37 @@ export default function ServicePreview() {
     <section className={`section ${styles.section}`} id="services-preview">
       <div className="container">
         <div className={styles.header}>
-          <span className={styles.label}>What We Do</span>
+          <span className={styles.label}>Packages</span>
           <h2 className={styles.heading}>
-            Services Built for{" "}
-            <span className="gradient-text">Growth</span>
+            Transparent <span className="gradient-text">Pricing</span>
           </h2>
           <p className={styles.description}>
-            From concept to launch, we deliver digital solutions that drive real
-            business results.
+            Choose the right package for your business needs. 
+            High-end design and performance at every tier.
           </p>
         </div>
 
         <div className={styles.grid}>
-          {services.map((service, index) => (
+          {packages.map((pkg, index) => (
             <div
-              key={service.title}
-              className={styles.card}
+              key={pkg.tier}
+              className={`${styles.card} ${pkg.popular ? styles.popular : ""}`}
               style={{ animationDelay: `${index * 0.15}s` }}
             >
-              <div
-                className={styles.iconWrapper}
-                style={{ background: service.gradient }}
-              >
-                <service.icon size={24} color="white" />
-              </div>
-              <h3 className={styles.cardTitle}>{service.title}</h3>
-              <p className={styles.cardDescription}>{service.description}</p>
+              {pkg.popular && <div className={styles.popularBadge}>Most Popular</div>}
+              <h3 className={styles.tier}>{pkg.tier}</h3>
+              <div className={styles.price}>{pkg.price}</div>
+              <div className={styles.timeline}>{pkg.timeline}</div>
+              
+              <ul className={styles.features}>
+                {pkg.features.map((feature, i) => (
+                  <li key={i}>
+                    <Check size={16} className={styles.checkIcon} />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+              
               <div className={styles.cardGlow} />
             </div>
           ))}

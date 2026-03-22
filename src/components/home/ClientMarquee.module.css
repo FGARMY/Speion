@@ -5,14 +5,7 @@
   border-bottom: 1px solid var(--border);
 }
 
-.label {
-  text-align: center;
-  font-size: 0.85rem;
-  color: var(--text-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 32px;
-}
+
 
 .marqueeWrapper {
   position: relative;
@@ -36,20 +29,21 @@
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  padding: 12px 24px;
+  gap: 48px;
 }
 
 .clientName {
   font-family: var(--font-heading);
-  font-size: 1.5rem;
+  font-size: clamp(3rem, 6vw, 4.5rem);
   font-weight: 700;
-  color: var(--text-dim);
-  letter-spacing: -0.01em;
-  transition: color 0.3s var(--ease-out);
+  color: var(--text);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   white-space: nowrap;
   user-select: none;
 }
 
-.clientItem:hover .clientName {
-  color: var(--text-muted);
+.dot {
+  color: var(--accent);
+  font-size: clamp(2rem, 4vw, 3rem);
 }

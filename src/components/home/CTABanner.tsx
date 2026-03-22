@@ -12,18 +12,22 @@ export default function CTABanner() {
       </div>
       <div className={`container ${styles.content}`}>
         <h2 className={styles.heading}>
-          Ready to Build Something
-          <br />
-          <span className={styles.highlight}>Amazing?</span>
+          READY TO BUILD<br />
+          <span className={`${styles.highlight} gradient-text`}>SOMETHING?</span>
         </h2>
         <p className={styles.text}>
           Let&apos;s discuss your project and create something extraordinary
           together.
         </p>
-        <Link href="/contact" className={styles.button}>
-          Start Your Project
-          <ArrowUpRight size={18} />
-        </Link>
+        <div className={styles.ctas}>
+          <Link href="/contact" className={styles.ctaPrimary}>
+            Start Your Project
+            <ArrowUpRight size={18} />
+          </Link>
+          <Link href="/services" className={styles.ctaSecondary}>
+            View Packages
+          </Link>
+        </div>
       </div>
     </section>
   );

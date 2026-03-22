@@ -20,32 +20,30 @@ export default function Hero() {
         {/* Badge */}
         <div className={styles.badge}>
           <span className={styles.badgeDot} />
-          Web Development &bull; Logo Design &bull; Branding
+          Available for New Projects
         </div>
 
         {/* Heading */}
         <h1 className={styles.heading}>
           <span className={styles.word}>We</span>{" "}
           <span className={styles.word}>Build</span>{" "}
-          <span className={styles.word}>Brands</span>{" "}
-          <span className={styles.word}>That</span>{" "}
-          <span className={`${styles.word} gradient-text`}>Convert</span>
+          <span className={`${styles.word} gradient-text`}>Digital</span>{" "}
+          <span className={styles.word}>Experiences</span>
         </h1>
 
         {/* Subtext */}
         <p className={styles.subtext}>
-          High-performance websites, stunning logos, and complete brand identity
-          kits — designed for conversion, speed, and business growth.
+          High-performance websites and digital experiences designed for conversion, speed, and business growth.
         </p>
 
         {/* CTAs */}
         <div className={styles.ctas}>
-          <Link href="/work" className={styles.ctaPrimary}>
-            View Our Work
+          <Link href="/services" className={styles.ctaPrimary}>
+            View Packages
             <ArrowUpRight size={18} />
           </Link>
-          <Link href="/contact" className={styles.ctaSecondary}>
-            Get a Quote
+          <Link href="/work" className={styles.ctaSecondary}>
+            See Our Work
           </Link>
         </div>
 

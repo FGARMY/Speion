@@ -24,9 +24,9 @@
   max-width: 800px;
   max-height: 800px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(108,92,231,0.2) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(108,92,231,0.3) 0%, transparent 70%);
   animation: meshMove 20s ease-in-out infinite;
-  filter: blur(80px);
+  filter: blur(120px);
 }
 
 .meshOrb2 {
@@ -38,9 +38,9 @@
   max-width: 700px;
   max-height: 700px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0,206,201,0.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(253,121,168,0.25) 0%, transparent 70%); /* Pink */
   animation: meshMove 25s ease-in-out infinite reverse;
-  filter: blur(80px);
+  filter: blur(120px);
 }
 
 .meshOrb3 {
@@ -52,10 +52,10 @@
   max-width: 600px;
   max-height: 600px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(167,139,250,0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0,206,201,0.2) 0%, transparent 70%); /* Cyan */
   animation: meshMove 22s ease-in-out infinite;
   animation-delay: -10s;
-  filter: blur(80px);
+  filter: blur(120px);
 }
 
 .gridOverlay {
@@ -124,7 +124,6 @@
 .word:nth-child(2) { animation-delay: 0.62s; }
 .word:nth-child(3) { animation-delay: 0.74s; }
 .word:nth-child(4) { animation-delay: 0.86s; }
-.word:nth-child(5) { animation-delay: 0.98s; }
 
 /* Subtext */
 .subtext {

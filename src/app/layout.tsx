@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Outfit } from "next/font/google";
+import { Bebas_Neue, Syne, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -7,15 +7,22 @@ import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
 import Preloader from "@/components/shared/Preloader";
 import CustomCursor from "@/components/ui/CustomCursor";
 
-const inter = Inter({
+const bebas = Bebas_Neue({
+  weight: "400",
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-bebas",
   display: "swap",
 });
 
-const outfit = Outfit({
+const syne = Syne({
   subsets: ["latin"],
-  variable: "--font-outfit",
+  variable: "--font-syne",
+  display: "swap",
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-dm",
   display: "swap",
 });
 
@@ -54,10 +61,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
+    <html lang="en" className={`${bebas.variable} ${syne.variable} ${dmSans.variable}`}>
       <body>
         <Preloader />
         <CustomCursor />
+        <div className="noise-overlay" aria-hidden="true" />
         <SmoothScrollProvider>
           <Navbar />
           <main>{children}</main>

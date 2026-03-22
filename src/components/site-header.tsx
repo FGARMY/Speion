@@ -33,10 +33,11 @@ export function SiteHeader() {
             <span className="text-2xl font-black tracking-tighter text-gradient group-hover:scale-105 transition-transform">SPEION</span>
           </Link>
         </div>
-        <nav className="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wide text-muted hover:[&_a]:text-foreground transition-all">
+        <nav className="hidden lg:flex items-center gap-8 text-sm font-semibold tracking-wide text-muted hover:[&_a]:text-foreground transition-all">
           <Link href="#services" className="hover:glow-text">Services</Link>
-          <Link href="#pricing" className="hover:glow-text">Pricing</Link>
-          <Link href="#addons" className="hover:glow-text">Add-ons</Link>
+          <Link href="#work" className="hover:glow-text">Work</Link>
+          <Link href="#process" className="hover:glow-text">Process</Link>
+          <Link href="#testimonials" className="hover:glow-text">Authority</Link>
         </nav>
         <div className="flex items-center gap-4">
           <ThemeToggle />

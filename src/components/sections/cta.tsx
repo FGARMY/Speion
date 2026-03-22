@@ -45,12 +45,12 @@ export function CtaSection() {
           <Reveal>
             <div className="max-w-xl text-left">
               <h2 className="text-6xl md:text-8xl font-black mb-8 tracking-tighter leading-[0.9]">
-                Ready to Scale Your <br />
-                <AnimatedText text="Business?" />
+                Let&apos;s Scale Your <br />
+                <AnimatedText text="Revenue" />
               </h2>
               <p className="text-xl md:text-2xl text-muted-foreground mb-12 font-medium leading-relaxed">
-                Let&apos;s build something extraordinary together. Our team is ready to 
-                bring your vision to life with world-class digital solutions.
+                Stop guessing. Start growing. Our team architects elite digital high-ticket funnels 
+                designed for maximum business impact and measurable ROI.
               </p>
               
               <div className="flex flex-col gap-6">
@@ -135,7 +135,7 @@ export function CtaSection() {
                             <Loader2 className="w-6 h-6 animate-spin" />
                           ) : (
                             <>
-                              <span>Launch Project</span>
+                              <span>Secure My Audit</span>
                               <Send className="w-5 h-5 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
                             </>
                           )}

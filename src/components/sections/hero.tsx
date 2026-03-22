@@ -87,9 +87,11 @@ export function HeroSection() {
             </span>
           </div>
           
-          <h1 className="text-6xl md:text-8xl lg:text-9xl xl:text-[10rem] 2xl:text-[12rem] font-black tracking-[-0.04em] mb-8 max-w-[100rem] mx-auto leading-[0.85] text-foreground">
-            Transforming Brands Through <br />
-            <span className="text-gradient drop-shadow-[0_0_30px_rgba(94,23,235,0.2)]">Digital Artistry</span>
+          <h1 className="text-6xl md:text-8xl lg:text-9xl xl:text-[9rem] 2xl:text-[11rem] font-black tracking-[-0.04em] mb-8 max-w-[100rem] mx-auto leading-[0.85] text-foreground text-balance">
+            We Build High-Converting <br />
+            <span className="text-gradient drop-shadow-[0_0_30px_rgba(94,23,235,0.2)]">
+              Revenue Engines
+            </span>
           </h1>
         </motion.div>
 
@@ -100,8 +102,8 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto font-medium leading-relaxed">
-            We don't just build websites. We craft premium digital legacies 
-            that capture attention and drive unparalleled business growth.
+            Stop losing premium clients to average design. We engineer elite digital experiences 
+            that position your brand as the undisputed authority in your industry.
           </p>
         </motion.div>
 

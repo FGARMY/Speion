@@ -3,10 +3,9 @@ import { HeroSection } from "@/components/sections/hero";
 import { ServicesSection } from "@/components/sections/services";
 import dynamic from "next/dynamic";
 
-const PricingSection = dynamic(() => import("@/components/sections/pricing").then(mod => ({ default: mod.PricingSection })));
-const AddonsSection = dynamic(() => import("@/components/sections/addons").then(mod => ({ default: mod.AddonsSection })));
-const WhyChooseUsSection = dynamic(() => import("@/components/sections/why-choose-us").then(mod => ({ default: mod.WhyChooseUsSection })));
-const StatsSection = dynamic(() => import("@/components/sections/stats").then(mod => ({ default: mod.StatsSection })));
+const WorkSection = dynamic(() => import("@/components/sections/work").then(mod => ({ default: mod.WorkSection })));
+const ProcessSection = dynamic(() => import("@/components/sections/process").then(mod => ({ default: mod.ProcessSection })));
+const TestimonialsSection = dynamic(() => import("@/components/sections/testimonials").then(mod => ({ default: mod.TestimonialsSection })));
 const CtaSection = dynamic(() => import("@/components/sections/cta").then(mod => ({ default: mod.CtaSection })));
 import { SiteFooter } from "@/components/site-footer";
 
@@ -20,10 +19,9 @@ export default function Home() {
         <HeroSection />
         <Marquee />
         <ServicesSection />
-        <WhyChooseUsSection />
-        <PricingSection />
-        <AddonsSection />
-        <StatsSection />
+        <WorkSection />
+        <ProcessSection />
+        <TestimonialsSection />
         <CtaSection />
       </main>
       <SiteFooter />

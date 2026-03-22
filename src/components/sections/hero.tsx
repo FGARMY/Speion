@@ -115,13 +115,13 @@ export function HeroSection() {
         >
           <Magnetic>
             <Button size="lg" className="w-full sm:w-auto text-xl h-16 px-10 rounded-full font-bold group relative overflow-hidden transition-all shadow-[0_0_40px_-5px_rgba(108,71,255,0.5)] hover:shadow-primary/80">
-              <span className="relative z-10">Start a Project</span>
+              <span className="relative z-10">Get Started</span>
               <div className="absolute inset-0 bg-black/10 dark:bg-white/10 -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
             </Button>
           </Magnetic>
           <Magnetic>
             <Button size="lg" variant="outline" className="w-full sm:w-auto text-xl h-16 px-10 rounded-full font-bold border-black/20 dark:border-white/20 bg-black/5 dark:bg-white/5 backdrop-blur-md hover:bg-primary hover:text-white transition-all">
-              View Strategy
+              Book a Call
             </Button>
           </Magnetic>
         </motion.div>

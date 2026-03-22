@@ -35,14 +35,14 @@ export function SiteHeader() {
         </div>
         <nav className="hidden lg:flex items-center gap-8 text-sm font-semibold tracking-wide text-muted hover:[&_a]:text-foreground transition-all">
           <Link href="#services" className="hover:glow-text">Services</Link>
+          <Link href="#about" className="hover:glow-text">About</Link>
           <Link href="#work" className="hover:glow-text">Work</Link>
-          <Link href="#process" className="hover:glow-text">Process</Link>
-          <Link href="#testimonials" className="hover:glow-text">Authority</Link>
+          <Link href="#testimonials" className="hover:glow-text">Testimonials</Link>
         </nav>
         <div className="flex items-center gap-4">
           <ThemeToggle />
           <Button size="sm" className="rounded-full px-6 bg-primary hover:glow-primary transition-all">
-            Get Started
+            Book a Call
           </Button>
         </div>
       </Container>

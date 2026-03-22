@@ -19,10 +19,9 @@ export default function Home() {
       <main className="flex-1 overflow-x-hidden">
         <HeroSection />
         <Marquee />
-        <ValueProposition />
         <ServicesSection />
+        <ValueProposition />
         <WorkSection />
-        <ProcessSection />
         <TestimonialsSection />
         <CtaSection />
       </main>

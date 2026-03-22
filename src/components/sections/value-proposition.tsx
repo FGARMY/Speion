@@ -26,7 +26,7 @@ export function ValueProposition() {
   ];
 
   return (
-    <Section id="why-us" className="bg-card/20 relative">
+    <Section id="about" className="bg-card/20 relative">
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center mb-32 px-4">
           <Reveal>

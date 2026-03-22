@@ -11,6 +11,35 @@
   --card: #f1f4f9;
   --card-foreground: #131343;
   --border: #e5e7eb;
+
+  /* Elite Spacing System (8px Grid) */
+  --space-05: 0.25rem; /* 4px */
+  --space-1: 0.5rem;   /* 8px */
+  --space-2: 1rem;     /* 16px */
+  --space-3: 1.5rem;   /* 24px */
+  --space-4: 2rem;     /* 32px */
+  --space-6: 3rem;     /* 48px */
+  --space-8: 4rem;     /* 64px */
+  --space-12: 6rem;    /* 96px */
+  --space-16: 8rem;    /* 128px */
+  --space-24: 12rem;   /* 192px */
+
+  /* Fluid Typography Scale (Top 1% standards) */
+  --text-xs: clamp(0.75rem, 0.7rem + 0.2vw, 0.875rem);
+  --text-sm: clamp(0.875rem, 0.8rem + 0.3vw, 1rem);
+  --text-base: clamp(1rem, 0.95rem + 0.4vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1.05rem + 0.5vw, 1.25rem);
+  --text-xl: clamp(1.25rem, 1.15rem + 0.6vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 1.4rem + 0.75vw, 2rem);
+  --text-3xl: clamp(2rem, 1.8rem + 1vw, 3.5rem);
+  --text-display: clamp(3.5rem, 2rem + 6vw, 12rem);
+
+  /* Elevation & Glass */
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2.5rem;
+  --glass-blur: 16px;
 }
 
 .dark {
@@ -37,6 +66,31 @@
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-border: var(--border);
+  
+  --spacing-1: var(--space-1);
+  --spacing-2: var(--space-2);
+  --spacing-3: var(--space-3);
+  --spacing-4: var(--space-4);
+  --spacing-6: var(--space-6);
+  --spacing-8: var(--space-8);
+  --spacing-12: var(--space-12);
+  --spacing-16: var(--space-16);
+  --spacing-24: var(--space-24);
+
+  --font-size-xs: var(--text-xs);
+  --font-size-sm: var(--text-sm);
+  --font-size-base: var(--text-base);
+  --font-size-lg: var(--text-lg);
+  --font-size-xl: var(--text-xl);
+  --font-size-2xl: var(--text-2xl);
+  --font-size-3xl: var(--text-3xl);
+  --font-size-display: var(--text-display);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+
   --font-sans: var(--font-geist-sans), Arial, sans-serif;
   --font-mono: var(--font-geist-mono), monospace;
 }

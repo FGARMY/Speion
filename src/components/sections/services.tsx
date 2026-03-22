@@ -11,21 +11,21 @@ import { Code, PenTool, Layers } from "lucide-react";
 export function ServicesSection() {
   const services = [
     {
-      title: "Website Development",
-      description: "Fast, responsive, and SEO-optimized websites built to convert visitors into customers.",
-      benefit: "Scalable architecture & seamless user experience.",
+      title: "Revenue Architecture",
+      description: "We don't just build sites; we engineer high-performance customer acquisition engines specialized for SaaS and startups.",
+      benefit: "Scalable tech stack & sub-100ms LCP.",
       icon: <Code className="w-8 h-8 text-primary" />,
     },
     {
-      title: "Logo Design",
-      description: "Unique and memorable logos that instantly communicate your brand's core identity.",
-      benefit: "Stand out in your industry with custom aesthetics.",
+      title: "Conversion Design",
+      description: "Pixel-perfect, 'Clay-grade' UI/UX designed to build immediate brand authority and maximize user LTV.",
+      benefit: "Elite branding that commands premium pricing.",
       icon: <PenTool className="w-8 h-8 text-accent-pink" />,
     },
     {
-      title: "Brand Identity",
-      description: "Comprehensive branding kits including typography, color palettes, and visual guidelines.",
-      benefit: "Maintain consistency across all marketing channels.",
+      title: "Growth Engineering",
+      description: "End-to-end digital transformation. From strategy to implementation, we scale your product's market presence.",
+      benefit: "Measurable ROI & data-driven optimization.",
       icon: <Layers className="w-8 h-8 text-accent-cyan" />,
     },
   ];

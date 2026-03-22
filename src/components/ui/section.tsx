@@ -7,7 +7,7 @@ export const Section = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <section
     ref={ref}
-    className={cn("py-20 md:py-32", className)}
+    className={cn("py-24 md:py-48 lg:py-64", className)}
     {...props}
   />
 ))

@@ -9,13 +9,37 @@ import { AnimatedText } from "@/components/ui/animated-text";
 import { Magnetic } from "@/components/ui/magnetic";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, CheckCircle2, Loader2 } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { z, ZodError } from "zod";
+
+const contactSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Please enter a valid email address"),
+  message: z.string().min(10, "Message must be at least 10 characters"),
+});
 
 export function CtaSection() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrors({});
+    
+    // Zod Validation
+    const validation = contactSchema.safeParse(formData);
+    if (!validation.success) {
+      const fieldErrors: Record<string, string> = {};
+      validation.error.issues.forEach((issue) => {
+        if (issue.path[0]) {
+          fieldErrors[issue.path[0] as string] = issue.message;
+        }
+      });
+      setErrors(fieldErrors);
+      return;
+    }
+
     setStatus("loading");
     
     try {
@@ -98,10 +122,14 @@ export function CtaSection() {
                           required
                           type="text" 
                           placeholder="Your Name" 
-                          className="w-full h-16 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-2xl px-6 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all text-lg font-medium"
+                          className={cn(
+                            "w-full h-16 bg-black/5 dark:bg-white/5 border rounded-2xl px-6 focus:outline-none focus:ring-1 transition-all text-lg font-medium",
+                            errors.name ? "border-red-500/50 focus:ring-red-500/50" : "border-black/10 dark:border-white/10 focus:border-primary/50 focus:ring-primary/50"
+                          )}
                           value={formData.name}
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         />
+                        {errors.name && <p className="text-red-500 text-xs font-bold ml-1">{errors.name}</p>}
                       </div>
                       <div className="space-y-2">
                         <label className="text-sm font-bold uppercase tracking-widest text-muted-foreground ml-1">Email</label>
@@ -109,10 +137,14 @@ export function CtaSection() {
                           required
                           type="email" 
                           placeholder="hello@example.com" 
-                          className="w-full h-16 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-2xl px-6 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all text-lg font-medium"
+                          className={cn(
+                            "w-full h-16 bg-black/5 dark:bg-white/5 border rounded-2xl px-6 focus:outline-none focus:ring-1 transition-all text-lg font-medium",
+                            errors.email ? "border-red-500/50 focus:ring-red-500/50" : "border-black/10 dark:border-white/10 focus:border-primary/50 focus:ring-primary/50"
+                          )}
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         />
+                        {errors.email && <p className="text-red-500 text-xs font-bold ml-1">{errors.email}</p>}
                       </div>
                       <div className="space-y-2">
                         <label className="text-sm font-bold uppercase tracking-widest text-muted-foreground ml-1">Message</label>
@@ -120,10 +152,14 @@ export function CtaSection() {
                           required
                           rows={4} 
                           placeholder="Tell us about your project..." 
-                          className="w-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-2xl p-6 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all text-lg font-medium resize-none"
+                          className={cn(
+                            "w-full bg-black/5 dark:bg-white/5 border rounded-2xl p-6 focus:outline-none focus:ring-1 transition-all text-lg font-medium resize-none",
+                            errors.message ? "border-red-500/50 focus:ring-red-500/50" : "border-black/10 dark:border-white/10 focus:border-primary/50 focus:ring-primary/50"
+                          )}
                           value={formData.message}
                           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                         />
+                        {errors.message && <p className="text-red-500 text-xs font-bold ml-1">{errors.message}</p>}
                       </div>
                       <Magnetic>
                         <Button 
@@ -143,7 +179,7 @@ export function CtaSection() {
                         </Button>
                       </Magnetic>
                       {status === "error" && (
-                        <p className="text-red-500 text-sm font-bold text-center mt-4">Something went wrong. Please try hello@speion.com</p>
+                        <p className="text-red-500 text-sm font-bold text-center mt-4 uppercase tracking-tighter">Transmission Failed. Use hello@speion.com</p>
                       )}
                     </motion.form>
                   )}

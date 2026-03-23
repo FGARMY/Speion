@@ -129,12 +129,5 @@ body {
   text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
 
-* {
-  cursor: none !important;
-}
 
-@media (max-width: 768px) {
-  * {
-    cursor: auto !important;
-  }
-}
+/* Glass Effects & Components Already defined above */

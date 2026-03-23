@@ -64,7 +64,6 @@ export const metadata: Metadata = {
   },
 };
 
-import { CustomCursor } from "@/components/ui/cursor";
 import { Analytics } from "@/components/analytics";
 import { Suspense } from "react";
 import { SmoothScroll } from "@/components/smooth-scroll";
@@ -87,7 +86,6 @@ export default function RootLayout({
             <Suspense fallback={null}>
               <Analytics />
             </Suspense>
-            <CustomCursor />
             {children}
           </SmoothScroll>
         </ThemeProvider>

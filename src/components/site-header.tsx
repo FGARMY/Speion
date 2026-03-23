@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -12,40 +12,52 @@ export function SiteHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    return scrollY.onChange((latest) => {
+    return scrollY.on("change", (latest) => {
       setIsScrolled(latest > 50);
     });
   }, [scrollY]);
 
   return (
     <motion.header 
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className={`fixed top-0 z-50 w-full transition-all duration-500 border-b ${
         isScrolled 
-          ? "border-b border-black/10 dark:border-white/10 bg-background/70 backdrop-blur-xl py-2" 
-          : "bg-transparent py-4"
+          ? "border-foreground/10 bg-background/80 backdrop-blur-xl py-3" 
+          : "border-transparent bg-transparent py-6"
       }`}
     >
       <Container className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <Link href="/" className="flex items-center space-x-2 group">
-            <span className="text-2xl font-black tracking-tighter text-gradient group-hover:scale-105 transition-transform">SPEION</span>
-          </Link>
-        </div>
-        <nav className="hidden lg:flex items-center gap-8 text-sm font-semibold tracking-wide text-muted hover:[&_a]:text-foreground transition-all">
-          <Link href="#services" className="hover:glow-text">Services</Link>
-          <Link href="#about" className="hover:glow-text">About</Link>
-          <Link href="#work" className="hover:glow-text">Work</Link>
-          <Link href="#testimonials" className="hover:glow-text">Testimonials</Link>
+        <Link href="/" className="group flex items-center">
+          <span className="text-xl font-black tracking-tighter transition-all duration-300 group-hover:tracking-[0.1em]">
+            SPEION
+          </span>
+        </Link>
+        
+        <nav className="hidden md:flex items-center gap-10">
+          {["Work", "Services", "About", "Process"].map((item) => (
+            <Link 
+              key={item} 
+              href={`#${item.toLowerCase()}`} 
+              className="text-xs font-bold uppercase tracking-[0.2em] text-muted hover:text-foreground transition-colors relative group"
+            >
+              {item}
+              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-foreground transition-all duration-300 group-hover:w-full" />
+            </Link>
+          ))}
         </nav>
-        <div className="flex items-center gap-4">
+
+        <div className="flex items-center gap-6">
           <ThemeToggle />
-          <Button size="sm" className="rounded-full px-6 bg-primary hover:glow-primary transition-all">
-            Book a Call
+          <Button 
+            className="hidden sm:flex text-[10px] uppercase font-bold tracking-[0.25em] px-8 py-6 h-auto bg-foreground text-background hover:bg-foreground/90 transition-all rounded-none"
+          >
+            Start a Project
           </Button>
         </div>
       </Container>
     </motion.header>
   );
 }
+

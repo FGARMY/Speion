@@ -11,7 +11,7 @@ export function CustomCursor() {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
   
-  const springConfig = { damping: 25, stiffness: 400, mass: 0.5 };
+  const springConfig = { damping: 30, stiffness: 500, mass: 0.2 };
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
 
@@ -48,7 +48,7 @@ export function CustomCursor() {
     <>
       {/* Main Dot */}
       <motion.div
-        className="fixed top-0 left-0 w-3 h-3 bg-white rounded-full pointer-events-none z-[9999] mix-blend-difference"
+        className="fixed top-0 left-0 w-1.5 h-1.5 bg-foreground rounded-full pointer-events-none z-[9999] mix-blend-difference"
         style={{
           x: cursorX,
           y: cursorY,
@@ -59,15 +59,16 @@ export function CustomCursor() {
       />
       {/* Trailing Ring */}
       <motion.div
-        className="fixed top-0 left-0 w-12 h-12 border-[1.5px] border-white rounded-full pointer-events-none z-[9998] mix-blend-difference"
+        className="fixed top-0 left-0 w-8 h-8 border-[0.5px] border-foreground rounded-full pointer-events-none z-[9998] mix-blend-difference"
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
           translateX: "-50%",
           translateY: "-50%",
-          opacity: isVisible ? 1 : 0,
+          opacity: isVisible ? 0.5 : 0,
         }}
       />
     </>
   );
 }
+

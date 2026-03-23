@@ -1,94 +1,95 @@
 "use client";
 
-import { Container } from "@/components/ui/container";
-import { Section } from "@/components/ui/section";
-import { Reveal } from "@/components/ui/reveal";
-import { AnimatedText } from "@/components/ui/animated-text";
 import { motion } from "framer-motion";
+import { Container } from "@/components/ui/container";
+import Image from "next/image";
 
 const projects = [
   {
-    client: "Acme FinTech",
-    metric: "+240% User Acquisition",
-    role: "UX/UI & Next.js Development",
-    color: "bg-primary/20",
+    title: "Echo Reality",
+    category: "CGI • Experience Design",
+    description: "An immersive digital ecosystem for the next generation of spatial computing.",
+    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1600",
   },
   {
-    client: "Global Logistics",
-    metric: "$2.4M Recovered Revenue",
-    role: "E-Commerce Replatforming",
-    color: "bg-accent-pink/20",
+    title: "Quantum Flux",
+    category: "Brand Identity • Web3",
+    description: "Reimagining institutional finance through high-fidelity digital artistry.",
+    image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&q=80&w=1600",
   },
   {
-    client: "HealthCorp SaaS",
-    metric: "45% Lower Churn Rate",
-    role: "Product Design & Strategy",
-    color: "bg-accent-cyan/20",
-  },
-  {
-    client: "Enterprise B2B",
-    metric: "12x Lead Generation",
-    role: "Corporate Rebranding",
-    color: "bg-indigo-500/20",
+    title: "Symmetry Lab",
+    category: "Product Design • SaaS",
+    description: "Building the standard for collaborative intelligence in enterprise workflows.",
+    image: "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&q=80&w=1600",
   }
 ];
 
 export function WorkSection() {
   return (
-    <Section id="work" className="bg-background relative">
+    <section id="work" className="section-padding bg-background">
       <Container>
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 px-4">
-          <Reveal>
-            <h2 className="text-5xl md:text-7xl font-black tracking-tight leading-[0.9]">
-              Featured <AnimatedText text="Work" />
-            </h2>
-            <p className="text-xl text-muted-foreground mt-6 max-w-lg font-medium">
-              We don't build brochures. We engineer revenue engines. Here is the proof.
-            </p>
-          </Reveal>
+        <div className="mb-20">
+          <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-muted mb-6 block">
+            Selected Work
+          </span>
+          <h2 className="text-xl md:text-2xl font-black tracking-tight max-w-lg mb-10">
+            WE CRAFT DIGITAL ARTIFACTS THAT COMMAND ATTENTION AND DRIVE ACTION.
+          </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+        <div className="flex flex-col gap-32">
           {projects.map((project, index) => (
-            <Reveal key={index} delay={index * 0.1}>
-              <motion.div 
-                whileHover={{ y: -10 }}
-                className={`relative aspect-video rounded-3xl overflow-hidden border border-border group cursor-pointer ${project.color} dark:bg-black/40 backdrop-blur-sm`}
-              >
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10" />
+            <motion.div 
+              key={index}
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              className="group cursor-none"
+            >
+              <div className="relative aspect-[21/9] overflow-hidden mb-10 border border-foreground/5 transition-all duration-700 group-hover:border-foreground/20">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                  className="w-full h-full relative"
+                >
+                  <Image 
+                    src={project.image} 
+                    alt={project.title}
+                    fill
+                    className="object-cover grayscale hover:grayscale-0 transition-all duration-1000"
+                  />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-700" />
+                </motion.div>
                 
-                {/* Simulated Mockup Container */}
-                <div className="absolute inset-x-8 -bottom-12 top-20 bg-card rounded-t-xl border border-border/50 shadow-2xl overflow-hidden transform group-hover:scale-105 group-hover:-translate-y-4 transition-all duration-700 ease-out">
-                    <div className="w-full h-8 bg-black/5 dark:bg-white/5 border-b border-border flex items-center px-4 gap-2 backdrop-blur-md">
-                        <div className="w-3 h-3 rounded-full bg-red-400/80 shadow-sm" />
-                        <div className="w-3 h-3 rounded-full bg-yellow-400/80 shadow-sm" />
-                        <div className="w-3 h-3 rounded-full bg-green-400/80 shadow-sm" />
-                    </div>
-                    {/* Placeholder content inside mockup */}
-                    <div className="p-8 opacity-20 dark:opacity-20 flex flex-col gap-4">
-                        <div className="w-1/2 h-8 bg-foreground rounded-lg" />
-                        <div className="w-full h-4 bg-muted rounded" />
-                        <div className="w-3/4 h-4 bg-muted rounded mb-4" />
-                        <div className="w-full h-32 bg-primary/20 rounded-xl" />
-                    </div>
-                </div>
-
-                <div className="absolute bottom-0 left-0 w-full p-8 z-20 flex flex-col justify-end text-white">
-                  <span className="text-xs font-bold uppercase tracking-widest text-white/70 mb-3">
-                    {project.role}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                  <span className="text-[10px] uppercase font-bold tracking-[0.5em] px-8 py-4 bg-background border border-foreground/10">
+                    View Case Study
                   </span>
-                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-4">
-                    <h3 className="text-3xl font-black tracking-tight">{project.client}</h3>
-                    <div className="px-5 py-2.5 bg-primary/90 backdrop-blur-md text-white border border-white/20 text-sm font-bold rounded-full shadow-[0_0_30px_rgba(94,23,235,0.4)]">
-                        {project.metric}
-                    </div>
-                  </div>
                 </div>
-              </motion.div>
-            </Reveal>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-end">
+                <div>
+                  <h3 className="text-3xl md:text-4xl font-black mb-4 uppercase tracking-tighter transition-all duration-300 group-hover:tracking-[0.05em]">
+                    {project.title}
+                  </h3>
+                  <p className="text-muted text-sm max-w-sm">
+                    {project.description}
+                  </p>
+                </div>
+                <div className="md:text-right">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted">
+                    {project.category}
+                  </span>
+                </div>
+              </div>
+            </motion.div>
           ))}
         </div>
       </Container>
-    </Section>
+    </section>
   );
 }
+

@@ -1,73 +1,78 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { Container } from "@/components/ui/container";
-import { Section } from "@/components/ui/section";
-import { CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { SpotlightCard } from "@/components/ui/spotlight-card";
-import { Reveal } from "@/components/ui/reveal";
-import { AnimatedText } from "@/components/ui/animated-text";
-import { Code, PenTool, Layers } from "lucide-react";
+
+const services = [
+  {
+    number: "01",
+    title: "Brand Strategy & Identity",
+    description: "Defining the core essence of your brand through rigorous strategy and world-class visual identity systems.",
+    items: ["Visual Identity", "Brand Strategy", "Guidelines", "Messaging"],
+  },
+  {
+    number: "02",
+    title: "Experience Design",
+    description: "Creating immersive digital experiences that blend artistry with technical performance to drive deep engagement.",
+    items: ["UI / UX Design", "Motion Design", "Interactive Art", "Rapid Prototyping"],
+  },
+  {
+    number: "03",
+    title: "Technical Engineering",
+    description: "Building bleeding-edge platforms focused on extreme speed, scalability, and technical perfection.",
+    items: ["Next.js / React", "Headless CMS", "Performance Audit", "Web3 Integration"],
+  }
+];
 
 export function ServicesSection() {
-  const services = [
-    {
-      title: "Revenue Architecture",
-      description: "We don't just build sites; we engineer high-performance customer acquisition engines specialized for SaaS and startups.",
-      benefit: "Scalable tech stack & sub-100ms LCP.",
-      icon: <Code className="w-8 h-8 text-primary" />,
-    },
-    {
-      title: "Conversion Design",
-      description: "Pixel-perfect, 'Clay-grade' UI/UX designed to build immediate brand authority and maximize user LTV.",
-      benefit: "Elite branding that commands premium pricing.",
-      icon: <PenTool className="w-8 h-8 text-accent-pink" />,
-    },
-    {
-      title: "Growth Engineering",
-      description: "End-to-end digital transformation. From strategy to implementation, we scale your product's market presence.",
-      benefit: "Measurable ROI & data-driven optimization.",
-      icon: <Layers className="w-8 h-8 text-accent-cyan" />,
-    },
-  ];
-
   return (
-    <Section id="services" className="bg-card/30 relative">
+    <section id="services" className="section-padding bg-background border-y border-foreground/5">
       <Container>
-        <div className="text-center mb-16 px-4">
-          <Reveal>
-            <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tight">
-              Our Core <AnimatedText text="Services" />
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-medium">
-              We provide everything you need to establish a powerful digital presence from the ground up.
-            </p>
-          </Reveal>
+        <div className="mb-20">
+          <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-muted mb-6 block">
+            Core Expertise
+          </span>
+          <h2 className="text-xl md:text-2xl font-black tracking-tight max-w-lg">
+            WE PROVIDE THE TOOLS AND ARTISTRY TO SCALE AMBITIOUS IDEAS INTO GLOBAL REALITIES.
+          </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border-t border-foreground/5">
           {services.map((service, index) => (
-            <Reveal key={index} delay={index * 0.1}>
-              <SpotlightCard className="h-full bg-background/50 border-black/5 dark:border-white/5 backdrop-blur-sm hover:border-primary/20 transition-all shadow-xl group">
-                <CardHeader>
-                  <div className="mb-6 bg-black/5 dark:bg-white/5 w-16 h-16 rounded-2xl flex items-center justify-center border border-black/10 dark:border-white/10 group-hover:scale-110 group-hover:bg-primary/10 transition-all duration-500 shadow-2xl">
-                    {service.icon}
-                  </div>
-                  <CardTitle className="text-2xl font-bold tracking-tight">{service.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                    {service.description}
-                  </CardDescription>
-                  <div className="flex items-center gap-3 text-sm font-semibold text-foreground/80 py-3 px-4 bg-black/5 dark:bg-white/5 rounded-xl border border-black/10 dark:border-white/10 group-hover:bg-primary/5 group-hover:border-primary/20 transition-all">
-                    <span className="text-primary text-xl">✦</span>
-                    {service.benefit}
-                  </div>
-                </CardContent>
-              </SpotlightCard>
-            </Reveal>
+            <motion.div 
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: index * 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="p-10 md:p-12 lg:p-16 border-b md:border-b-0 md:border-r border-foreground/5 group hover:bg-foreground/5 transition-all duration-700"
+            >
+              <div className="flex flex-col h-full">
+                <span className="text-display font-black text-muted/10 mb-8 transition-all duration-700 group-hover:text-foreground/5">
+                  {service.number}
+                </span>
+                
+                <h3 className="text-2xl font-black mb-6 uppercase tracking-tight">
+                  {service.title}
+                </h3>
+                
+                <p className="text-muted text-sm mb-12 flex-grow leading-relaxed">
+                  {service.description}
+                </p>
+
+                <ul className="flex flex-wrap gap-x-6 gap-y-3">
+                  {service.items.map((item) => (
+                    <li key={item} className="text-[9px] font-bold uppercase tracking-widest text-muted/60 transition-colors group-hover:text-foreground">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
           ))}
         </div>
       </Container>
-    </Section>
+    </section>
   );
 }
+

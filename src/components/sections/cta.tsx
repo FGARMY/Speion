@@ -2,15 +2,11 @@
 
 import { useState } from "react";
 import { Container } from "@/components/ui/container";
-import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
-import { Reveal } from "@/components/ui/reveal";
-import { AnimatedText } from "@/components/ui/animated-text";
-import { Magnetic } from "@/components/ui/magnetic";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, CheckCircle2, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { z, ZodError } from "zod";
+import { z } from "zod";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -27,7 +23,6 @@ export function CtaSection() {
     e.preventDefault();
     setErrors({});
     
-    // Zod Validation
     const validation = contactSchema.safeParse(formData);
     if (!validation.success) {
       const fieldErrors: Record<string, string> = {};
@@ -61,134 +56,128 @@ export function CtaSection() {
   };
 
   return (
-    <Section id="contact" className="bg-background relative overflow-hidden py-32 md:py-48">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 blur-[180px] rounded-full pointer-events-none" />
-      
+    <section id="contact" className="section-padding bg-background border-t border-foreground/5 overflow-hidden">
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          <Reveal>
-            <div className="max-w-xl text-left">
-              <h2 className="text-6xl md:text-8xl font-black mb-8 tracking-tighter leading-[0.9]">
-                Let&apos;s Scale Your <br />
-                <AnimatedText text="Revenue" />
-              </h2>
-              <p className="text-xl md:text-2xl text-muted-foreground mb-12 font-medium leading-relaxed">
-                Stop guessing. Start growing. Our team architects elite digital high-ticket funnels 
-                designed for maximum business impact and measurable ROI.
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
+          <div>
+            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-muted mb-6 block">
+              Start a Conversation
+            </span>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-[-0.04em] mb-10 leading-[1.1] uppercase">
+              LET'S BUILD <br /> SOMETHING <br /> ICONIC.
+            </h2>
+            <p className="text-muted text-base max-w-sm mb-12 leading-relaxed">
+              We are currently accepting a limited number of high-impact projects for Q2-Q3 2026. Secure your discovery audit today.
+            </p>
+            
+            <div className="space-y-4">
+              <a href="mailto:hello@speion.com" className="text-xl md:text-2xl font-black tracking-tight hover:text-muted transition-colors transition-all duration-300">
+                hello@speion.com
+              </a>
+              <p className="text-[10px] uppercase font-bold tracking-widest text-muted">
+                Response time: &lt; 24 hours
               </p>
-              
-              <div className="flex flex-col gap-6">
-                <div className="flex items-center gap-4 group cursor-pointer">
-                  <div className="w-12 h-12 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:border-primary/50 transition-all">
-                    <Send className="w-5 h-5 text-primary" />
-                  </div>
-                  <span className="text-lg font-bold">hello@speion.com</span>
-                </div>
-              </div>
             </div>
-          </Reveal>
+          </div>
 
-          <Reveal delay={0.2}>
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-primary to-accent-pink rounded-[2.5rem] blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
-              <div className="relative bg-card/50 backdrop-blur-2xl border border-black/10 dark:border-white/10 p-10 md:p-14 rounded-[2.5rem] shadow-2xl">
-                <AnimatePresence mode="wait">
-                  {status === "success" ? (
-                    <motion.div 
-                      key="success"
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      className="text-center py-20"
-                    >
-                      <CheckCircle2 className="w-20 h-20 text-green-500 mx-auto mb-6" />
-                      <h3 className="text-3xl font-black mb-4 tracking-tight">Message Received!</h3>
-                      <p className="text-muted-foreground text-lg mb-8">Our strategy team will review your project and contact you within 24 hours.</p>
-                      <Button onClick={() => setStatus("idle")} variant="outline" className="rounded-full px-8 h-12 font-bold transition-all hover:bg-primary hover:text-white">
-                        Send Another
-                      </Button>
-                    </motion.div>
-                  ) : (
-                    <motion.form 
-                      key="form"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      onSubmit={handleSubmit} 
-                      className="space-y-6"
-                    >
-                      <div className="space-y-2">
-                        <label className="text-sm font-bold uppercase tracking-widest text-muted-foreground ml-1">Name</label>
-                        <input 
-                          required
-                          type="text" 
-                          placeholder="Your Name" 
-                          className={cn(
-                            "w-full h-16 bg-black/5 dark:bg-white/5 border rounded-2xl px-6 focus:outline-none focus:ring-1 transition-all text-lg font-medium",
-                            errors.name ? "border-red-500/50 focus:ring-red-500/50" : "border-black/10 dark:border-white/10 focus:border-primary/50 focus:ring-primary/50"
-                          )}
-                          value={formData.name}
-                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        />
-                        {errors.name && <p className="text-red-500 text-xs font-bold ml-1">{errors.name}</p>}
-                      </div>
-                      <div className="space-y-2">
-                        <label className="text-sm font-bold uppercase tracking-widest text-muted-foreground ml-1">Email</label>
-                        <input 
-                          required
-                          type="email" 
-                          placeholder="hello@example.com" 
-                          className={cn(
-                            "w-full h-16 bg-black/5 dark:bg-white/5 border rounded-2xl px-6 focus:outline-none focus:ring-1 transition-all text-lg font-medium",
-                            errors.email ? "border-red-500/50 focus:ring-red-500/50" : "border-black/10 dark:border-white/10 focus:border-primary/50 focus:ring-primary/50"
-                          )}
-                          value={formData.email}
-                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        />
-                        {errors.email && <p className="text-red-500 text-xs font-bold ml-1">{errors.email}</p>}
-                      </div>
-                      <div className="space-y-2">
-                        <label className="text-sm font-bold uppercase tracking-widest text-muted-foreground ml-1">Message</label>
-                        <textarea 
-                          required
-                          rows={4} 
-                          placeholder="Tell us about your project..." 
-                          className={cn(
-                            "w-full bg-black/5 dark:bg-white/5 border rounded-2xl p-6 focus:outline-none focus:ring-1 transition-all text-lg font-medium resize-none",
-                            errors.message ? "border-red-500/50 focus:ring-red-500/50" : "border-black/10 dark:border-white/10 focus:border-primary/50 focus:ring-primary/50"
-                          )}
-                          value={formData.message}
-                          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        />
-                        {errors.message && <p className="text-red-500 text-xs font-bold ml-1">{errors.message}</p>}
-                      </div>
-                      <Magnetic>
-                        <Button 
-                          type="submit" 
-                          disabled={status === "loading"}
-                          className="w-full h-16 rounded-2xl text-xl font-black bg-primary glow-primary flex items-center justify-center gap-3 relative overflow-hidden group/btn disabled:opacity-70"
-                        >
-                          {status === "loading" ? (
-                            <Loader2 className="w-6 h-6 animate-spin" />
-                          ) : (
-                            <>
-                              <span>Secure My Audit</span>
-                              <Send className="w-5 h-5 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
-                            </>
-                          )}
-                          <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300" />
-                        </Button>
-                      </Magnetic>
-                      {status === "error" && (
-                        <p className="text-red-500 text-sm font-bold text-center mt-4 uppercase tracking-tighter">Transmission Failed. Use hello@speion.com</p>
+          <div className="relative">
+            <AnimatePresence mode="wait">
+              {status === "success" ? (
+                <motion.div 
+                  key="success"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="bg-foreground/5 p-12 lg:p-16 text-center"
+                >
+                  <CheckCircle2 className="w-12 h-12 mx-auto mb-6 text-foreground" />
+                  <h3 className="text-2xl font-black mb-4 uppercase tracking-tight">Transmission Received</h3>
+                  <p className="text-muted text-sm mb-10 max-w-xs mx-auto">Our strategy team will review your requirements and contact you shortly.</p>
+                  <Button 
+                    onClick={() => setStatus("idle")} 
+                    className="text-[10px] uppercase font-bold tracking-[0.25em] px-10 py-6 h-auto bg-foreground text-background hover:bg-foreground/90 transition-all rounded-none"
+                  >
+                    Send Another
+                  </Button>
+                </motion.div>
+              ) : (
+                <motion.form 
+                  key="form"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  onSubmit={handleSubmit} 
+                  className="space-y-10"
+                >
+                  <div className="space-y-1">
+                    <label className="text-[10px] font-bold uppercase tracking-widest text-muted ml-1">Name</label>
+                    <input 
+                      required
+                      type="text" 
+                      placeholder="Enter your name" 
+                      className={cn(
+                        "w-full bg-transparent border-b py-4 focus:outline-none focus:border-foreground transition-all text-lg font-bold placeholder:text-muted/30",
+                        errors.name ? "border-red-500/50" : "border-foreground/10"
                       )}
-                    </motion.form>
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-[10px] font-bold uppercase tracking-widest text-muted ml-1">Email</label>
+                    <input 
+                      required
+                      type="email" 
+                      placeholder="Enter your email" 
+                      className={cn(
+                        "w-full bg-transparent border-b py-4 focus:outline-none focus:border-foreground transition-all text-lg font-bold placeholder:text-muted/30",
+                        errors.email ? "border-red-500/50" : "border-foreground/10"
+                      )}
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-[10px] font-bold uppercase tracking-widest text-muted ml-1">Project Details</label>
+                    <textarea 
+                      required
+                      rows={1} 
+                      placeholder="Briefly describe your project" 
+                      className={cn(
+                        "w-full bg-transparent border-b py-4 focus:outline-none focus:border-foreground transition-all text-lg font-bold placeholder:text-muted/30 resize-none",
+                        errors.message ? "border-red-500/50" : "border-foreground/10"
+                      )}
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    />
+                  </div>
+                  
+                  <Button 
+                    type="submit" 
+                    disabled={status === "loading"}
+                    className="w-full text-[10px] uppercase font-bold tracking-[0.25em] py-8 h-auto bg-foreground text-background hover:bg-foreground/90 transition-all rounded-none disabled:opacity-70 group"
+                  >
+                    {status === "loading" ? (
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                    ) : (
+                      <span className="flex items-center gap-4">
+                        Secure Discovery Audit
+                        <Send className="w-3 h-3 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                      </span>
+                    )}
+                  </Button>
+                  
+                  {status === "error" && (
+                    <p className="text-red-500 text-[10px] font-bold text-center mt-4 uppercase tracking-widest">
+                      Something went wrong. Please try again.
+                    </p>
                   )}
-                </AnimatePresence>
-              </div>
-            </div>
-          </Reveal>
+                </motion.form>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
       </Container>
-    </Section>
+    </section>
   );
 }
+
